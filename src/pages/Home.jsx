@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Item from '../components/Item'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   const [items, setItems] = useState([])
@@ -20,18 +21,22 @@ const Home = () => {
         </div>
         <div className='row'>
           {items.map(item => (
-            <Item
-              key={item.id}
-              name={item.product_name}
-              price={item.price}
-              image={item.image}
-            />
+            <div className='item-container col-md-4' key={item.id}>
+              <Link
+                className='card-link'
+                to={`/items/${item.id}`}
+              >
+                <Item
+                  key={item.id}
+                  name={item.product_name}
+                  price={item.price}
+                  image={item.image}
+                />
+              </Link>
+            </div>
           ))}
-
         </div>
-
       </div>
-
     </>
   )
 }

@@ -15,6 +15,22 @@ body{
   background-image: radial-gradient(ellipse at center, #ffffff, #efefef);
 }
 
+.card-link{
+  text-decoration: none;
+}
+
+.section-item-detail{
+  margin: 2%;
+}
+
+.img-detail{
+  margin: 10px;
+  max-width: 50%;
+  max-height: 380px; /* Ajusta el valor según tus necesidades */
+  width: auto;
+  height: auto;
+}
+
 #root{
   display: flex;
   flex-direction: column;
