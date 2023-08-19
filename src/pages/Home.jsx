@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Item from '../components/Item'
+import Item from '../components/Item/Item'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
