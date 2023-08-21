@@ -1,7 +1,28 @@
-import React from 'react'
+import { React, useState } from 'react'
+import { useItemContext } from '../../hooks/useItemContext'
 import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
+  const { items } = useItemContext()
+  const [inputValue, setInputValue] = useState('')
+  const [filteredData, setFilteredData] = useState([])
+  const listElement = document.getElementsByClassName('autocomplete-list')
+  console.log(items)
+  const handleInputChange = (event) => {
+    const newInputValue = event.target.value.toLowerCase()
+    setInputValue(newInputValue)
+
+    const newFilteredData = items.filter(item => item.product_name.toLowerCase().includes(newInputValue))
+    setFilteredData(newFilteredData)
+
+    listElement.style.display = 'block'
+  }
+  const handleItemClick = (item) => {
+    setInputValue(item)
+    setFilteredData([])
+  }
+
+  console.log(filteredData)
   return (
     <>
       <nav className='navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between px-4'>
@@ -24,7 +45,14 @@ const Navbar = () => {
         </div>
         <div className='container-fluid justify-content-center'>
           <form className='d-flex col-md-6' role='search'>
-            <input className='form-control me-2' type='search' placeholder='What are you looking for?' aria-label='Search' />
+            <input className='form-control me-2' type='text' value={inputValue} onChange={handleInputChange} placeholder='What are you looking for?' aria-label='Search' />
+            <ul className='autocomplete-list'>
+              {filteredData.map((item) => (
+                <li key={item.id} onClick={() => handleItemClick(item)}>
+                  <p>{item.id}</p>
+                </li>
+              ))}
+            </ul>
             <button className='btn btn-outline-success' type='submit'>Search</button>
           </form>
         </div>
