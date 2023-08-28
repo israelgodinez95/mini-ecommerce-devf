@@ -1,6 +1,6 @@
 import { React, useState } from 'react'
 import { useItemContext } from '@/hooks/useItemContext'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 const Navbar = () => {
   const { items } = useItemContext()
@@ -18,7 +18,7 @@ const Navbar = () => {
     listElement.style.display = 'block'
   }
   const handleItemClick = (item) => {
-    setInputValue(item)
+    setInputValue('')
     setFilteredData([])
   }
 
@@ -36,7 +36,16 @@ const Navbar = () => {
               <NavLink className='nav-link active' aria-current='page' to='/'>Home</NavLink>
             </li>
             <li className='nav-item'>
-              <a className='nav-link' href='#'>Cart</a>
+              <NavLink className='nav-link' to='/login'>Login</NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink className='nav-link' to='/signup'>Signup</NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink className='nav-link' to='/dashboard'>Dashboard</NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink className='nav-link' to='/secret'>Secret</NavLink>
             </li>
             <li className='nav-item'>
               <NavLink className='nav-link' to='/about'>About</NavLink>
@@ -44,12 +53,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className='container-fluid justify-content-center'>
-          <form className='d-flex col-md-6' role='search'>
+          <form className='d-flex col-md-10' role='search'>
             <input className='form-control me-2' type='text' value={inputValue} onChange={handleInputChange} placeholder='What are you looking for?' aria-label='Search' />
             <ul className='autocomplete-list'>
               {filteredData.map((item, index) => (
                 <li key={item.id} onClick={() => handleItemClick(item)}>
-                  <p>{item.product_name + ':' + (index + 1)}</p>
+                  <Link to={`/items/${item.id}`}>{item.product_name + ':' + (index + 1)}</Link>
                 </li>
               ))}
             </ul>
