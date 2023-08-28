@@ -1,5 +1,5 @@
 import { React, useState } from 'react'
-import { useItemContext } from '../../hooks/useItemContext'
+import { useItemContext } from '@/hooks/useItemContext'
 import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
@@ -47,9 +47,9 @@ const Navbar = () => {
           <form className='d-flex col-md-6' role='search'>
             <input className='form-control me-2' type='text' value={inputValue} onChange={handleInputChange} placeholder='What are you looking for?' aria-label='Search' />
             <ul className='autocomplete-list'>
-              {filteredData.map((item) => (
+              {filteredData.map((item, index) => (
                 <li key={item.id} onClick={() => handleItemClick(item)}>
-                  <p>{item.id}</p>
+                  <p>{item.product_name + ':' + (index + 1)}</p>
                 </li>
               ))}
             </ul>
