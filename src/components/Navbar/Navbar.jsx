@@ -6,23 +6,18 @@ const Navbar = () => {
   const { items } = useItemContext()
   const [inputValue, setInputValue] = useState('')
   const [filteredData, setFilteredData] = useState([])
-  const listElement = document.getElementsByClassName('autocomplete-list')
-  console.log(items)
   const handleInputChange = (event) => {
     const newInputValue = event.target.value.toLowerCase()
     setInputValue(newInputValue)
 
     const newFilteredData = items.filter(item => item.product_name.toLowerCase().includes(newInputValue))
     setFilteredData(newFilteredData)
-
-    listElement.style.display = 'block'
   }
   const handleItemClick = (item) => {
     setInputValue('')
     setFilteredData([])
   }
 
-  console.log(filteredData)
   return (
     <>
       <nav className='navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between px-4'>

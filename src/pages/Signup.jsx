@@ -1,11 +1,25 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
 import logo from '@/assets/react.svg'
 import '@/styles/form.css'
+import { registerUserService } from '@/services/userService'
 
 const Signup = () => {
+  const { register, handleSubmit, reset, formState: { errors } } = useForm()
+
+  const sendData = async (data) => {
+    try {
+      const response = await registerUserService(data)
+      console.log(response)
+    } catch (error) {
+      console.error(error)
+    }
+    reset()
+  }
+
   return (
     <main className='form-signin w-100 m-auto'>
-      <form>
+      <form onSubmit={handleSubmit(sendData)}>
         <img className='mb-4' src={logo} alt='' width='72' height='57' />
         <h1 className='h3 mb-3 fw-normal'>Please sign up</h1>
 
@@ -15,9 +29,8 @@ const Signup = () => {
             className='form-control'
             id='first_name'
             name='first_name'
-            value=''
-            onChange={() => { }}
             placeholder='John'
+            {...register('first_name')}
           />
           <label htmlFor='first_name'>First Name</label>
         </div>
@@ -28,9 +41,8 @@ const Signup = () => {
             className='form-control'
             id='last_name'
             name='last_name'
-            value=''
-            onChange={() => { }}
             placeholder='Doe'
+            {...register('last_name')}
           />
           <label htmlFor='last_name'>Last Name</label>
         </div>
@@ -40,8 +52,7 @@ const Signup = () => {
             className='form-select'
             id='gender'
             name='gender'
-            value=''
-            onChange={() => { }}
+            {...register('gender')}
           >
             <option value=''>Choose...</option>
             <option value='M'>Male</option>
@@ -56,9 +67,8 @@ const Signup = () => {
             className='form-control'
             id='email'
             name='email'
-            value=''
-            onChange={() => { }}
             placeholder='name@example.com'
+            {...register('email')}
           />
           <label htmlFor='email'>Email address</label>
         </div>
@@ -69,9 +79,8 @@ const Signup = () => {
             className='form-control'
             id='password'
             name='password'
-            value=''
-            onChange={() => { }}
             placeholder='Password'
+            {...register('password')}
           />
           <label htmlFor='password'>Password</label>
         </div>

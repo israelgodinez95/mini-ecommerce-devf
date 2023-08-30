@@ -1,8 +1,11 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Navigate } from 'react-router-dom'
+import { useAdminContext } from '@/hooks/useAdminContext'
 import { About, Dashboard, Home, ItemDetail, Login, Secret, Signup } from '@/pages'
 
 const RoutesIndex = () => {
+  const { isAdmin } = useAdminContext()
+
   return (
     <Routes>
       <Route path='/' element={<Home />} />
@@ -10,7 +13,13 @@ const RoutesIndex = () => {
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path='/items/:id' element={<ItemDetail />} />
       <Route path='/login' element={<Login />} />
-      <Route path='/secret' element={<Secret />} />
+      <Route
+        path='/secret' element={
+        isAdmin
+          ? <Secret />
+          : <Navigate to='/' />
+      }
+      />
       <Route path='/signup' element={<Signup />} />
     </Routes>
   )
