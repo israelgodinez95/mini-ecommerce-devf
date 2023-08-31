@@ -10,7 +10,13 @@ const RoutesIndex = () => {
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/about' element={<About />} />
-      <Route path='/dashboard' element={<Dashboard />} />
+      <Route
+        path='/dashboard' element={
+          isAdmin
+            ? <Dashboard />
+            : <Navigate to='/' />
+        }
+      />
       <Route path='/items/:id' element={<ItemDetail />} />
       <Route path='/login' element={<Login />} />
       <Route

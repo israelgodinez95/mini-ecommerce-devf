@@ -1,0 +1,13 @@
+.nav-link{
+    color: rgb(255, 255, 255) !important;
+    }
+    
+    .nav-link:hover{
+      cursor:pointer;
+      color: rgb(74, 204, 219) !important;
+    }
+    
+#filtered-item-list{
+  position:absolute;
+  
+}

@@ -1,7 +1,6 @@
 * {
-  /*box-sizing: border-box;
+  box-sizing: border-box;
   outline: 1px solid limegreen;
-*/
 }
 
 html, body {
@@ -93,11 +92,3 @@ footer{
   color: white;
 }
 
-.nav-link{
-color: rgb(255, 255, 255) !important;
-}
-
-.nav-link:hover{
-  cursor:pointer;
-  color: rgb(74, 204, 219) !important;
-}
