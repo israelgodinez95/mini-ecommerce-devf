@@ -9,5 +9,13 @@
     
 #filtered-item-list{
   position:absolute;
-  
+}
+
+#filtered-item-list{
+  border: none;
+}
+
+#item-link{
+  text-decoration: none;
+  color: black;
 }

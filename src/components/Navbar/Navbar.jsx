@@ -23,24 +23,21 @@ const Navbar = () => {
     <>
       <nav className='navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between px-4'>
         <a className='navbar-brand' to='/'>MINIshop</a>
-
-        <div className='container-fluid justify-content-center'>
-          <form className='d-flex col-md-10' role='search'>
-            <div className='container'>
+        <div className='container-fluid'>
+          <form className='d-flex col-md-6' role='search'>
+            <div className='container col-md-12'>
               <input className='form-control me-2' type='text' value={inputValue} onChange={handleInputChange} placeholder='What are you looking for?' aria-label='Search' />
-              <ul id='filtered-item-list' className='autocomplete-list col-md-5'>
-                {filteredData.map((item, index) => (
+              <ul id='filtered-item-list' className='autocomplete-list col-md-4'>
+                {inputValue.length > 0 && filteredData.map((item, index) => (
                   <li key={item.id} onClick={() => handleItemClick(item)}>
-                    <Link to={`/items/${item.id}`}>{item.product_name + ':' + (index + 1)}</Link>
+                    <Link id='item-link' to={`/items/${item.id}`}>{(index + 1) + '.- ' + item.product_name}</Link>
                   </li>
                 ))}
               </ul>
             </div>
-
             <button className='btn btn-outline-success' type='submit'>Search</button>
           </form>
         </div>
-
         <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation'>
           <span className='navbar-toggler-icon' />
         </button>
