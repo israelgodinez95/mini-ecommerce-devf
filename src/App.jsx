@@ -9,15 +9,18 @@ import { AdminProvider } from '@/context/AdminContext'
 function App () {
   return (
     <>
-      <AdminProvider>
-        <BrowserRouter>
-          <ItemProvider>
-            <Navbar />
-            <RoutesIndex />
-          </ItemProvider>
-          <Footer />
-        </BrowserRouter>
-      </AdminProvider>
+      <div className='App'>
+        <AdminProvider>
+          <BrowserRouter>
+            <ItemProvider>
+              <Navbar />
+              <RoutesIndex />
+            </ItemProvider>
+            <Footer />
+          </BrowserRouter>
+        </AdminProvider>
+      </div>
+
     </>
   )
 }

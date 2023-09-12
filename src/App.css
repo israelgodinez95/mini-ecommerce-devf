@@ -14,7 +14,19 @@ html, body {
 body{
   background-image: radial-gradient(ellipse at center, #ffffff, #efefef);
 }
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegura que la página ocupe al menos el 100% de la altura de la ventana */
+}
 
+.RoutesIndex {
+  flex: 1; /* Permite que el contenido principal ocupe el espacio disponible */
+}
+
+.Footer {
+  flex-shrink: 0; /* Evita que el footer se reduzca cuando el contenido es pequeño */
+}
 .card-link{
   text-decoration: none;
 }

@@ -21,20 +21,49 @@ const Secret = () => {
 
   return (
     <>
-      <h1>Secret</h1>
-      <div>
-        {loading
-          ? <h1>Cargando...</h1>
-          : users.map(({ id, first_name, last_name, gender, email, role }) =>
-            (<div key={id}>
+      <div className='title-container container d-flex justify-content-center'>
+        <h1>Secret</h1>
+      </div>
+      <div className='container'>
+        <div className='row'>
+          {loading
+            ? <h1>Cargando...</h1>
+            : users.map(({ id, first_name, last_name, gender, email, role }) =>
+              (
+                <div className='col-md-6 mx-auto' key={id}>
+                  <div className='card mb-4'>
+                    <div className='card-body'>
+                      <h5 className='card-title'>
+                        {first_name} {last_name}
+                      </h5>
+                      <p className='card-text'>
+                        <strong>Gender:</strong> {gender}
+                      </p>
+                      <p className='card-text'>
+                        <strong>Email:</strong> {email}
+                      </p>
+                      <p className='card-text'>
+                        <strong>Role:</strong> {role}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              ))}
+        </div>
+      </div>
+
+    </>
+  )
+}
+export default Secret
+
+/*
+<div key={id}>
               <span>{first_name}</span><br />
               <span>{last_name}</span><br />
               <span>{gender}</span><br />
               <span>{email}</span><br />
               <span>{role}</span><br />
-             </div>))}
-      </div>
-    </>
-  )
-}
-export default Secret
+             </div>
+*/

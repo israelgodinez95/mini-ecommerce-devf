@@ -9,7 +9,7 @@ const Footer = () => {
         <li className='nav-item'><NavLink to='/' className='nav-link px-2'>Features</NavLink></li>
         <li className='nav-item'><NavLink to='/' className='nav-link px-2'>Pricing</NavLink></li>
         <li className='nav-item'><NavLink to='/' className='nav-link px-2'>FAQs</NavLink></li>
-        <li className='nav-item'><NavLink to='/' className='nav-link px-2'>About</NavLink></li>
+        <li className='nav-item'><NavLink to='/about' className='nav-link px-2'>About</NavLink></li>
       </ul>
       <p className='text-center'>IsraelGodinezBravo© 2023 Company, Inc</p>
     </footer>
