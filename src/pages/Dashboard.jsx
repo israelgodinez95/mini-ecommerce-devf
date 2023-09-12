@@ -7,7 +7,8 @@ const Dashboard = () => {
 
   const sendData = async (data) => {
     try {
-      const response = await createNewItem(data)
+      const token = localStorage.getItem('jwt_token')
+      const response = await createNewItem(data, token)
       console.log(response)
     } catch (error) {
       console.error(error)
@@ -29,44 +30,44 @@ const Dashboard = () => {
             <input
               type='text'
               className='form-control'
-              id='first_name'
-              name='first_name'
-              placeholder='John'
-              {...register('first_name')}
+              id='product_name'
+              name='product_name'
+              placeholder='Tenis'
+              {...register('product_name')}
             />
-            <label htmlFor='first_name'>Product Name</label>
+            <label htmlFor='product_name'>Product Name</label>
           </div>
 
           <div className='form-floating'>
             <input
               type='text'
               className='form-control'
-              id='last_name'
-              name='last_name'
-              placeholder='Doe'
-              {...register('last_name')}
+              id='description'
+              name='description'
+              placeholder='Designed for running'
+              {...register('description')}
             />
-            <label htmlFor='last_name'>Description</label>
+            <label htmlFor='description'>Description</label>
           </div>
 
           <div className='form-floating'>
             <input
               type='text'
               className='form-control'
-              id='last_name'
-              name='last_name'
-              placeholder='Doe'
-              {...register('last_name')}
+              id='price'
+              name='price'
+              placeholder='$999'
+              {...register('price')}
             />
-            <label htmlFor='last_name'>Price</label>
+            <label htmlFor='price'>Price</label>
           </div>
 
           <div className='form-floating'>
             <select
               className='form-select'
-              id='gender'
-              name='gender'
-              {...register('gender')}
+              id='category'
+              name='category'
+              {...register('category')}
             >
               <option value=''>Choose...</option>
               <option value='Books'>Books</option>
@@ -92,46 +93,46 @@ const Dashboard = () => {
               <option value='Automotive'>Automotive</option>
               <option value='Industrial'>Industrial</option>
             </select>
-            <label htmlFor='gender'>Category</label>
+            <label htmlFor='category'>Category</label>
           </div>
 
           <div className='form-floating'>
             <input
               type='text'
               className='form-control'
-              id='last_name'
-              name='last_name'
-              placeholder='Doe'
-              {...register('last_name')}
+              id='brand'
+              name='brand'
+              placeholder='Adidas'
+              {...register('brand')}
             />
-            <label htmlFor='last_name'>Brand</label>
+            <label htmlFor='brand'>Brand</label>
           </div>
 
           <div className='form-floating'>
             <input
-              type='email'
+              type='text'
               className='form-control'
-              id='email'
-              name='email'
+              id='sku'
+              name='sku'
               placeholder='name@example.com'
-              {...register('email')}
+              {...register('sku')}
             />
-            <label htmlFor='email'>SKU</label>
+            <label htmlFor='sku'>SKU</label>
           </div>
 
           <div className='form-floating'>
             <input
-              type='password'
+              type='text'
               className='form-control'
-              id='password'
-              name='password'
-              placeholder='Password'
-              {...register('password')}
+              id='image'
+              name='image'
+              placeholder='Image'
+              {...register('image')}
             />
             <label htmlFor='password'>Image URL</label>
           </div>
 
-          <button className='w-100 btn btn-lg btn-primary' type='submit'>Sign in</button>
+          <button className='w-100 btn btn-lg btn-primary' type='submit'>Create Item</button>
           <p className='mt-5 mb-3 text-muted'>© 2017–2023</p>
         </form>
       </main>
